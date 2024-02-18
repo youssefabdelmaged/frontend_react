@@ -34,8 +34,11 @@ import bolt from '../assets/bolt.png';
 import nb from '../assets/nb.png';
 import skype from '../assets/skype.png';
 import spotify from '../assets/spotify.png';
-import whatsapp from '../assets/whatsapp.png'
+import whatsapp from '../assets/whatsapp.png';
+
+
 export default {
+  
   email,
   mobile,
   api,
