@@ -2,6 +2,7 @@
   flex: 1;
   width: 100%;
   flex-direction: column;
+  overflow: hidden; /* confine inner carousels within Work section */
 }
 
 .app__work-filter {
@@ -44,11 +45,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 
   .app__work-item {
     width: 270px;
+    display: flex;
     flex-direction: column;
+    min-height: 420px; /* keep consistent card heights */
 
     margin: 2rem;
     padding: 1rem;
@@ -65,6 +68,7 @@
 
     @media screen and (min-width: 2000px) {
       width: 470px;
+      min-height: 560px;
       padding: 1.25rem;
       border-radius: 0.75rem;
     }
@@ -92,67 +96,75 @@
   }
 }
 
+.app__work-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 
-.app__work-hover{
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
+  border-radius: 0.5rem;
+  opacity: 1;
+  transition: all 0.3s ease;
+
+  div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
 
-    border-radius: 0.5rem;
-    opacity: 1;
+    margin: 1rem;
+    font-family: var(--font-base);
+    font-weight: 800;
+    cursor: pointer;
     transition: all 0.3s ease;
 
-    div{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-
-        margin: 1rem;
-        font-family: var(--font-base);
-        font-weight: 800;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        svg{
-            width: 50%;
-            height: 50%;
-            color: var(--white-color);
-        }
-
+    svg {
+      width: 50%;
+      height: 50%;
+      color: var(--white-color);
     }
-
+  }
 }
 
-.app__work-content{
-    padding: 0.5rem;
-    width: 100%;
-    position: relative;
-    flex-direction: column;
+.app__work-content {
+  padding: 0.5rem;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  display: flex;
+  flex: 1 1 auto;
 
-    h4{
-        margin-top: 1rem;
-        line-height: 1.5;
+  h4 {
+    margin-top: 1rem;
+    line-height: 1.5;
 
-        @media screen and (min-width: 2000px) {
-            margin-top: 3rem;
-          }
+    @media screen and (min-width: 2000px) {
+      margin-top: 3rem;
     }
+  }
 
-    .app__work-tag {
-        position: absolute;
+  .app__work-desc {
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* show max 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 3.2em; /* approximate 2 lines height to align rows */
+  }
 
-        padding: 0.5rem 1rem;
-        border-radius: 10px;
-        background-color: #fff;
+  .app__work-tag {
+    position: absolute;
 
-        top: -25px;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background-color: #fff;
 
-    }
+    top: -25px;
+  }
 }
